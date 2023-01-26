@@ -1,7 +1,7 @@
 import random
 
 def make_sentence(quantity, tense):
-    print(f"{get_determiner(quantity)} {get_noun(quantity)} {get_verb(quantity, tense)}")
+    print(f"{get_determiner(quantity)} {get_noun(quantity)} {get_verb(quantity, tense)} {get_prepositional_phrase(quantity)}")
 
 
 def get_determiner(quantity):
@@ -19,7 +19,7 @@ def get_noun(quantity):
     else:
         wordList = ["birds", "boys", "cars", "cats", "children",
         "dogs", "girls", "men", "rabbits", "women"]
-    return random.choice(wordList)
+    return f"{get_adjective()} {random.choice(wordList)}"
 
 
 def get_verb(quantity, tense):
@@ -32,7 +32,27 @@ def get_verb(quantity, tense):
     else:
         wordList=["will drink", "will eat", "will grow", "will laugh", "will think", "will run", "will sleep", "will talk", "will walk", "will write"]
     
-    return random.choice(wordList) #random word from wordList        
+    return f"{random.choice(wordList)} {get_adverb()}"  #random word from wordList        
+
+def get_preposition():
+    wordList = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+    return random.choice(wordList)
+
+def get_adjective():
+    wordList = ["ashamed", "adorable", "attractive", "beautiful", "awful", "aggressive", "cruel", "clever", "tasty", "jealous"]
+    return random.choice(wordList)
+
+def get_adverb():
+    wordList = ["accidentally", "awkwardly", "intently", "joyfully", "speedily"]
+    return random.choice(wordList)
+
+def get_prepositional_phrase(quantity):
+    return f"{get_preposition()} {get_determiner(quantity)} {get_noun(quantity)}"
 
 
 # define and call the instructions from the specified functions
